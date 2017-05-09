@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    function show(arr){
+        var str = fn(arr);
+        function fn(arr){
+            //console.log(arr)
+            var str2 = '';
+            arr.forEach(function(a){
+                if(a.child.length==0){
+                    //没有子集
+                    str2 += '<li><h2>'+a.name+'</h2></li>';
+                }else{
+                    //有子集
+                    str2 += '<li><h2>'+a.name+'</h2><ul>'+fn(a.child)+'</ul></li>';
+                }
+            })
+            return str2;
+        }
+        return str;
+    }
+</script>
+</body>
+</html>

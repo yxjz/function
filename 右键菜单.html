@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    /*
+     * obj:可点区域
+     * obj1；右键菜单
+     *
+     * */
+    function wrighth(obj,obj1) {
+        obj.oncontextmenu = function (ev) {
+            ev.preventDefault();
+            obj1.style.display = 'block';
+            //能够移动的最大距离
+            var maxL = obj.clientWidth - obj1.offsetWidth;
+            var maxT = obj.clientHeight - obj1.offsetHeight;
+            //鼠标右键的距离
+            var L = ev.clientX-obj.getBoundingClientRect().left;
+            var T = ev.clientY-obj.getBoundingClientRect().top;
+            var l = L<maxL?L:maxL;
+            var t = T<maxT?T:T-obj1.offsetHeight;
+            obj1.style.top = t+'px';
+            obj1.style.left = l+'px';
+        }
+        document.onclick = function (ev) {
+            if(!(ev.target.parentNode==obj1)){
+                obj1.style.cssText = '';
+            }
+        }
+
+    }
+
+</script>
+</body>
+</html>

@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    function drawRect(cxt,x,y,width,height,borderWidth,borderColor,fillColor) {
+        cxt.lineWidth = borderWidth;
+        cxt.fillStyle = fillColor;
+        cxt.strokeStyle = borderColor;
+
+        cxt.fillRect(x,y,width,height);
+        cxt.strokeRect(x,y,width,height)
+    }
+</script>
+</body>
+</html>

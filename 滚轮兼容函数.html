@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    function addMouseScroll(init){
+        init.ele.onmousewheel = fn
+        init.ele.addEventListener('DOMMouseScroll',fn)
+        function fn(ev){
+            var onOff = null;
+            //true:向上，false:向下
+            if(ev.wheelDelta){
+                //谷歌，ie
+                onOff = ev.wheelDelta>0?true:false;
+            }else{
+                //火狐
+                onOff = ev.detail<0?true:false;
+            }
+            if(onOff){
+                typeof init.fnUp == 'function' && init.fnUp();
+                console.log(typeof init.fnUp == 'function')
+            }else{
+                typeof init.fnDown == 'function' && init.fnDown();
+            }
+        }
+    }
+</script>
+</body>
+</html>

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    function drag(obj){
+        obj.onmousedown = function(ev){
+            ev.preventDefault();
+            var disX = ev.clientX - this.getBoundingClientRect().left;
+            var disY = ev.clientY - this.getBoundingClientRect().top;
+            document.onmousemove = function(ev){
+                var l = ev.clientX-disX;
+                var t = ev.clientY-disY;
+                obj.style.left = l+'px';
+                obj.style.top = t+'px';
+                if(duang(obj,div2)){
+                    //碰上变黄
+                    div2.style.background = 'yellow';
+                }else{
+                    //没碰上变回蓝
+                    div2.style.background = '';
+                }
+            }
+            document.onmouseup = function(){
+                document.onmousemove = null;
+                document.onmouseup = null;
+            }
+        }
+    }
+    function duang(obj1,obj2){
+        var pos1 = obj1.getBoundingClientRect();
+        var pos2 = obj2.getBoundingClientRect();
+        //没碰上的情况
+        if(pos1.right<pos2.left||pos1.bottom<pos2.top||pos1.left>pos2.right||pos1.top>pos2.bottom){
+            //有一个符合就是没碰上
+            return false;
+        }else{
+            return true;
+        }
+    }
+</script>
+</body>
+</html>

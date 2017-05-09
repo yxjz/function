@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+
+    drawStar(ctx,100,200,600,600,12)
+    /*
+     * r:小圆半径
+     * R：大圆半径
+     * x,y：偏移量
+     *rot：旋转度数
+     * */
+    function drawStar(cxt,r,R,x,y,rot) {
+        cxt.beginPath()
+        for (var i=0;i<5;i++){
+            //大圆半径300,往右和下移400；
+            cxt.lineTo(Math.cos((18+i*72-rot)/180*Math.PI)*R+x,
+                -Math.sin((18+i*72-rot)/180*Math.PI)*R+y);
+            //小圆半径是150
+            cxt.lineTo(Math.cos((54+i*72-rot)/180*Math.PI)*r+x,
+                -Math.sin((54+i*72-rot)/180*Math.PI)*r+y)
+        }
+        cxt.closePath()
+
+        cxt.stroke();
+    }
+
+</script>
+
+
+</body>
+</html>
